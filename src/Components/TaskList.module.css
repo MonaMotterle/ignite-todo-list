@@ -23,3 +23,21 @@
   color: var(--gray-200);
   background: var(--gray-400);
 }
+
+.emptyTaskList {
+  display: flex;
+  padding: 4rem 1.5rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  align-self: stretch;
+  border-radius: 0.5rem;
+  border-top: 1px solid var(--gray-400);
+}
+
+.emptyTaskList p {
+  color: var(--gray-300);
+  font-size: 1rem;
+  line-height: 1.4rem;
+}

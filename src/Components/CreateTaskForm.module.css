@@ -2,7 +2,7 @@
   display: grid;
   margin: -1.625rem 0 4rem;
   grid-template-columns: 1fr 5.625rem;
-  width: 46rem;
+  align-items: center;
   gap: 0.5rem;
 }
 
@@ -16,6 +16,7 @@
 }
 
 .createTaskForm .createButton {
+  height: 3.25rem;
   padding: 1rem;
   background: var(--blue-800);
   color: var(--gray-100);

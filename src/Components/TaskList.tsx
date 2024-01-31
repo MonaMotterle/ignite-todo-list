@@ -1,6 +1,6 @@
 import style from './TaskList.module.css';
-const listOfTasks = [
-  'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
+import clipboard from '../assets/Clipboard.svg';
+const listOfTasks: string[] = [
   'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
   'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
   'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
@@ -20,9 +20,17 @@ export const TaskList = () => {
         </p>
       </header>
       <main>
-        {listOfTasks.map((task, index) => (
-          <p key={index}>{task}</p>
-        ))}
+        {listOfTasks.length
+          ? listOfTasks.map((task, index) => (
+            <p key={index}>{task}</p>
+          )) : (
+            <div className={style.emptyTaskList}>
+              <img src={clipboard} alt="Clipboard icon" />
+              <p><strong>Você ainda não tem tarefas cadastradas</strong> <br/>
+                Crie tarefas e organize seus itens a fazer</p>
+            </div>
+          )
+        }
       </main>
     </div>
   )
