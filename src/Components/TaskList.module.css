@@ -1,0 +1,25 @@
+.taskListHeader {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.taskListCreated {
+  color: var(--blue-400);
+  font-weight: 700;
+}
+
+.taskListDone {
+  color: var(--purple-400);
+  font-weight: 700;
+}
+
+.countTaskSpan {
+  padding: 0.125rem 0.5rem;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: var(--gray-200);
+  background: var(--gray-400);
+}

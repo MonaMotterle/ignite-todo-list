@@ -2,6 +2,7 @@ import './global.css'
 import style from './App.module.css'
 import {Header} from "./Components/Header.tsx";
 import {CreateTaskForm} from "./Components/CreateTaskForm.tsx";
+import {TaskList} from "./Components/TaskList.tsx";
 
 function App() {
 
@@ -12,7 +13,7 @@ function App() {
       <div className={style.container}>
         <CreateTaskForm />
 
-        <p>task list</p>
+        <TaskList />
       </div>
     </div>
   )
