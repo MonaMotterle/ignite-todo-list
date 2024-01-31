@@ -1,6 +1,7 @@
 import './global.css'
-import './App.css'
+import style from './App.module.css'
 import {Header} from "./Components/Header.tsx";
+import {CreateTaskForm} from "./Components/CreateTaskForm.tsx";
 
 function App() {
 
@@ -8,7 +9,11 @@ function App() {
     <div>
       <Header />
 
-      <p>Hello World</p>
+      <div className={style.container}>
+        <CreateTaskForm />
+
+        <p>task list</p>
+      </div>
     </div>
   )
 }
