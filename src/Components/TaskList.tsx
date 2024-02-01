@@ -1,10 +1,20 @@
 import style from './TaskList.module.css';
 import clipboard from '../assets/Clipboard.svg';
-const listOfTasks: string[] = [
-  'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
-  'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
-  'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
-  'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
+import {TaskItemProps, TaskItem} from "./TaskItem.tsx";
+const listOfTasks: TaskItemProps[] = [
+  {
+    done: true,
+    content: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
+  },
+  {
+    content: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
+  },
+  {
+    content: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
+  },
+  {
+    content: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
+  },
 ]
 
 export const TaskList = () => {
@@ -21,8 +31,8 @@ export const TaskList = () => {
       </header>
       <main>
         {listOfTasks.length
-          ? listOfTasks.map((task, index) => (
-            <p key={index}>{task}</p>
+          ? listOfTasks.map(task => (
+            <TaskItem key={task.content} task={task} />
           )) : (
             <div className={style.emptyTaskList}>
               <img src={clipboard} alt="Clipboard icon" />

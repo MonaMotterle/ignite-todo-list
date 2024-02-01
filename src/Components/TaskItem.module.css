@@ -1,0 +1,76 @@
+.taskItemWrap + .taskItemWrap {
+  margin-top: 0.75rem;
+}
+
+.taskItemWrap {
+  display: flex;
+  padding: 1rem;
+  align-items: flex-start;
+  gap: 0.75rem;
+  align-self: stretch;
+  border-radius: 0.5rem;
+  border: 1px solid var(--gray-400);
+  background: var(--gray-500);
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.06);
+}
+
+.taskItemDone p {
+  color: var(--gray-300);
+  text-decoration: line-through;
+}
+
+.taskItemWrap button {
+  background: none;
+  border-radius: 4px;
+  border: 0;
+  padding: 0.2rem;
+  cursor: pointer;
+}
+
+.deleteTask {
+  color: var(--gray-300);
+  display: flex;
+  width: 1.5rem;
+  height: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.25rem;
+
+  transition: background-color 0.1s, color 0.1s;
+}
+
+.deleteTask:hover {
+  color: var(--red-500);
+  background: var(--gray-400);
+}
+
+.radioCheckBoxButton .radioCheckBox {
+  width: 1rem;
+  height: 1rem;
+  border: 0.125rem solid var(--blue-400);
+  border-radius: 50%;
+}
+
+.radioCheckBoxButton:hover .radioCheckBox {
+  border-color: var(--blue-800);
+  background: rgb(30 111 159 /0.2);
+}
+
+.taskItemDone .radioCheckBoxButton .radioCheckBox {
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--purple-800);
+}
+
+.taskItemDone .radioCheckBoxButton:hover .radioCheckBox {
+  background: var(--purple-400);
+}
+
+.taskItemDone .radioCheckBoxButton .radioCheckBox:before {
+  content: '\2713';
+  font-size: 0.8rem;
+  line-height: 0;
+  color: var(--gray-100);
+}
