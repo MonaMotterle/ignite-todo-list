@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import {Header} from "./Components/Header.tsx";
 import {CreateTaskForm} from "./Components/CreateTaskForm.tsx";
 import {TaskList} from "./Components/TaskList.tsx";
-import {useState} from "react";
+import React, {useState} from "react";
 import type { ItemProps } from "./Components/TaskItem.tsx";
 
 function App() {
@@ -20,6 +20,23 @@ function App() {
     setItemsList([...itemsList, newTask])
   }
 
+  const updateItem = (item: ItemProps) => {
+    setItemsList(state => state.map(listItem =>{
+      if (listItem.id === item.id) return ({
+        ...item,
+        isCompleted: !item.isCompleted
+      });
+
+      return listItem;
+      }))
+  }
+
+  const deleteItem = (itemId: React.Key) => {
+    setItemsList(state => state.filter(
+      item => item.id !== itemId
+    ))
+  }
+
   return (
     <div>
       <Header />
@@ -27,7 +44,11 @@ function App() {
       <div className={style.container}>
         <CreateTaskForm  createItem={createItem}/>
 
-        <TaskList items={itemsList} />
+        <TaskList
+          items={itemsList}
+          onUpdateItem={updateItem}
+          onDeleteItem={deleteItem}
+        />
       </div>
     </div>
   )

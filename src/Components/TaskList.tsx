@@ -1,12 +1,17 @@
+import React from "react";
+
 import style from './TaskList.module.css';
 import clipboard from '../assets/Clipboard.svg';
+
 import {TaskItem, type ItemProps} from "./TaskItem.tsx";
 
 interface TaskListProps {
   items: ItemProps[];
+  onUpdateItem: (item: ItemProps) => void;
+  onDeleteItem: (item: React.Key) => void;
 }
 
-export const TaskList = ({ items }: TaskListProps) => {
+export const TaskList = ({ items, onUpdateItem, onDeleteItem }: TaskListProps) => {
   const sortList = (list: ItemProps[]) => {
     return [...list].sort((a, b) => {
       if (b.isCompleted === a.isCompleted) return 0;
@@ -29,7 +34,12 @@ export const TaskList = ({ items }: TaskListProps) => {
       <main>
         {items.length
           ? sortList(items).map(task => (
-            <TaskItem key={task.content} task={task} />
+            <TaskItem
+              key={task.content}
+              task={task}
+              onUpdateItem={onUpdateItem}
+              onDeleteItem={onDeleteItem}
+            />
           )) : (
             <div className={style.emptyTaskList}>
               <img src={clipboard} alt="Clipboard icon" />
