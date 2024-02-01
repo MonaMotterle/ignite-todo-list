@@ -2,7 +2,7 @@ import {Trash} from "phosphor-react";
 import style from './TaskItem.module.css';
 
 export interface TaskItemProps {
-  done?: boolean;
+  isCompleted?: boolean;
   content: string;
 }
 
@@ -12,10 +12,10 @@ interface ITaskItem {
 
 export const TaskItem = ({ task }: ITaskItem) => {
   return (
-    <div className={`${style.taskItemWrap} ${task.done ? style.taskItemDone : ''}`}>
+    <div className={`${style.taskItemWrap} ${task.isCompleted ? style.taskItemDone : ''}`}>
       <button
         className={style.radioCheckBoxButton}
-        title={task.done ? "Desfazer concluir tarefa" : "Concluir tarefa"}
+        title={task.isCompleted ? "Desfazer concluir tarefa" : "Concluir tarefa"}
       >
         <div className={style.radioCheckBox} />
       </button>

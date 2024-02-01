@@ -3,13 +3,14 @@ import clipboard from '../assets/Clipboard.svg';
 import {TaskItemProps, TaskItem} from "./TaskItem.tsx";
 const listOfTasks: TaskItemProps[] = [
   {
-    done: true,
+    isCompleted: true,
     content: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
   },
   {
     content: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
   },
   {
+    isCompleted: true,
     content: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
   },
   {
@@ -18,6 +19,14 @@ const listOfTasks: TaskItemProps[] = [
 ]
 
 export const TaskList = () => {
+  const sortList = (list: TaskItemProps[]) => {
+    return [...list].sort((a, b) => {
+      if (b.isCompleted === a.isCompleted) return 0;
+
+      return a.isCompleted? 1 : -1
+    });
+  }
+
   return (
     <div>
       <header className={style.taskListHeader}>
@@ -31,7 +40,7 @@ export const TaskList = () => {
       </header>
       <main>
         {listOfTasks.length
-          ? listOfTasks.map(task => (
+          ? sortList(listOfTasks).map(task => (
             <TaskItem key={task.content} task={task} />
           )) : (
             <div className={style.emptyTaskList}>
