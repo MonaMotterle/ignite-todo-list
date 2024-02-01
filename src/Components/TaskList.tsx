@@ -12,11 +12,16 @@ interface TaskListProps {
 }
 
 export const TaskList = ({ items, onUpdateItem, onDeleteItem }: TaskListProps) => {
+  const completedTasks = items.reduce(
+    (count, item) => item.isCompleted ? count + 1 : count,
+    0
+  );
+
   const sortList = (list: ItemProps[]) => {
     return [...list].sort((a, b) => {
       if (b.isCompleted === a.isCompleted) return 0;
 
-      return a.isCompleted? 1 : -1
+      return a.isCompleted ? 1 : -1
     });
   }
 
@@ -24,11 +29,13 @@ export const TaskList = ({ items, onUpdateItem, onDeleteItem }: TaskListProps) =
     <div>
       <header className={style.taskListHeader}>
         <p className={style.taskListCreated}>
-          Tarefas criadas <span className={style.countTaskSpan}>5</span>
+          Tarefas criadas <span className={style.countTaskSpan}>{items.length}</span>
         </p>
 
         <p className={style.taskListDone}>
-          Concluídas <span className={style.countTaskSpan}>2 de 5</span>
+          Concluídas <span className={style.countTaskSpan}>
+          {items.length > 0 ? `${completedTasks} de ` : ''}{items.length}
+        </span>
         </p>
       </header>
       <main>
