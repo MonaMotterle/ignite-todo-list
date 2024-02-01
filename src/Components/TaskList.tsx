@@ -1,25 +1,13 @@
 import style from './TaskList.module.css';
 import clipboard from '../assets/Clipboard.svg';
-import {TaskItemProps, TaskItem} from "./TaskItem.tsx";
-const listOfTasks: TaskItemProps[] = [
-  {
-    isCompleted: true,
-    content: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
-  },
-  {
-    content: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
-  },
-  {
-    isCompleted: true,
-    content: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
-  },
-  {
-    content: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
-  },
-]
+import {TaskItem, type ItemProps} from "./TaskItem.tsx";
 
-export const TaskList = () => {
-  const sortList = (list: TaskItemProps[]) => {
+interface TaskListProps {
+  items: ItemProps[];
+}
+
+export const TaskList = ({ items }: TaskListProps) => {
+  const sortList = (list: ItemProps[]) => {
     return [...list].sort((a, b) => {
       if (b.isCompleted === a.isCompleted) return 0;
 
@@ -39,8 +27,8 @@ export const TaskList = () => {
         </p>
       </header>
       <main>
-        {listOfTasks.length
-          ? sortList(listOfTasks).map(task => (
+        {items.length
+          ? sortList(items).map(task => (
             <TaskItem key={task.content} task={task} />
           )) : (
             <div className={style.emptyTaskList}>

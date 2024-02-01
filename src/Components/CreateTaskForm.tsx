@@ -1,10 +1,26 @@
 import style from './CreateTaskForm.module.css'
 import {PlusCircle} from "phosphor-react";
-import {FormEvent} from "react";
-export const CreateTaskForm = () => {
+import {ChangeEvent, FormEvent, InvalidEvent, useState} from "react";
+
+export const CreateTaskForm = ({ createItem }: {createItem: (newItem: string) => void}) => {
+  const [newTask, setNewTask] = useState('');
 
   const handleCreateTask = (event: FormEvent) => {
     event.preventDefault();
+
+    createItem(newTask)
+
+    setNewTask('');
+  }
+
+  const handleTaskChange = (event: ChangeEvent<HTMLInputElement>) => {
+    event.target.setCustomValidity('');
+
+    setNewTask(event.target.value);
+  }
+
+  const handleInvalidTask = (event: InvalidEvent<HTMLInputElement>) => {
+    event.target.setCustomValidity('Esse campo é obrigatório!')
   }
 
   return (
@@ -16,7 +32,10 @@ export const CreateTaskForm = () => {
         className={style.taskDescription}
         placeholder="Adicione uma nova tarefa"
         name="description"
-        type="text"
+        value={newTask}
+        onChange={handleTaskChange}
+        onInvalid={handleInvalidTask}
+        required
       />
 
       <button className={style.createButton} type="submit">
