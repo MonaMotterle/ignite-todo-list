@@ -1,6 +1,6 @@
-# Project Title
+# ToDo App
   
-This project uses an advanced and productive tech stack including TypeScript, Vite, and CSS Modules.
+This project includes TypeScript, Vite, and CSS Modules.
 
 ## TypeScript
 
